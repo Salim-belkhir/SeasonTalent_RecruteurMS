@@ -11,7 +11,7 @@
 	<groupId>fr.polytech</groupId>
 	<artifactId>Recruteur</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>Recruteur</name>
 	<description>Candidat service for the project</description>
 	<properties>

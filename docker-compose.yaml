@@ -1,0 +1,19 @@
+services:
+  recruteur_db:
+    image: 'postgres:latest'
+    environment:
+      - 'POSTGRES_DB=Recruteur_db'
+    env_file: .env
+    ports:
+      - '${RECRUTEUR_DB_PORT}'
+    # volumes:
+    #   - recruteur_db:/data/postgres
+
+  recruteur_ms:
+    image: "recruteur_ms:latest"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file: .env
+    ports:
+      - "${SPRING_RECRUTEUR_PORT}:${SPRING_RECRUTEUR_PORT}"
