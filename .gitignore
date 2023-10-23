@@ -36,4 +36,4 @@ build/
 .env
 
 ### Docker Volumes ###
-recruteur_db
+recruteurstorage
