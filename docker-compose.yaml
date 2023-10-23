@@ -9,6 +9,8 @@ services:
       - '${RECRUTEUR_DB_PORT}'
     volumes:
       - ./recruteurstorage:/data/postgres
+      - ./db_recruteur_init.sql:/docker-entrypoint-initdb.d/init.sql
+    command: ["-d", "/docker-entrypoint-initdb.d/init.sql"]
 
   recruteurms:
     container_name: Recruteur-MS
