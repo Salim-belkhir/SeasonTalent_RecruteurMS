@@ -6,7 +6,7 @@ services:
       - 'POSTGRES_DB=${RECRUTEUR_DB_NAME}'
     env_file: .env
     ports:
-      - '${RECRUTEUR_DB_PORT}'
+      - "${RECRUTEUR_DB_PORT}:5432"
     volumes:
       - ./recruteurstorage:/data/postgres
       - ./db_recruteur_init.sql:/docker-entrypoint-initdb.d/init.sql

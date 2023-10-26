@@ -37,3 +37,4 @@ build/
 
 ### Docker Volumes ###
 recruteurstorage
+db_recruteur_init
