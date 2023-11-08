@@ -1,0 +1,23 @@
+services:
+  recruteurdb:
+    container_name: Recruteur-Database
+    image: 'postgres:latest'
+    environment:
+      - 'POSTGRES_DB=${RECRUTEUR_DB_NAME}'
+    env_file: .env
+    ports:
+      - "${RECRUTEUR_DB_PORT}:5432"
+    volumes:
+      - ./recruteurstorage:/data/postgres
+      - ./db_recruteur_init.sql:/docker-entrypoint-initdb.d/init.sql
+    command: ["-d", "/docker-entrypoint-initdb.d/init.sql"]
+
+  recruteurms:
+    container_name: Recruteur-MS
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: "recruteurms:latest"
+    env_file: .env
+    ports:
+      - "${SPRING_RECRUTEUR_PORT}:${SPRING_RECRUTEUR_PORT}"
