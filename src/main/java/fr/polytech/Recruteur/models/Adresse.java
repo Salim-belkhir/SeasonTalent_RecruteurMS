@@ -7,7 +7,8 @@ import jakarta.persistence.*;
 public class Adresse {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator = "adresse_id_adresse_seq")
+    @SequenceGenerator(name = "adresse_id_adresse_seq", sequenceName = "adresse_id_adresse_seq", allocationSize = 1)
     @Column(name = "id_adresse")
     private Long id_adresse;
 
@@ -34,6 +35,17 @@ public class Adresse {
 
     public Adresse() {
 
+    }
+
+    @Override
+    public String toString() {
+        return "Adresse{" +
+                "id_adresse=" + id_adresse +
+                ", numero_voie=" + numero_voie +
+                ", nom_voie='" + nom_voie + '\'' +
+                ", code_postal='" + code_postal + '\'' +
+                ", ville='" + ville + '\'' +
+                '}';
     }
 
     public Long getId_adresse() {

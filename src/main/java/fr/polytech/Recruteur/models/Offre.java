@@ -9,7 +9,8 @@ public class Offre {
 
     @Id
     @Column(name = "id_offre")
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator = "offre_id_offre_seq")
+    @SequenceGenerator(name = "offre_id_offre_seq", sequenceName = "offre_id_offre_seq", allocationSize = 1)
     private Long id_offre;
 
     @Column(name = "titre")
@@ -46,6 +47,20 @@ public class Offre {
         this.salaire = salaire;
         this.avantages = avantages;
         this.etablissement = etablissement;
+    }
+
+    @Override
+    public String toString() {
+        return "Offre{" +
+                "id_offre=" + id_offre +
+                ", titre='" + titre + '\'' +
+                ", descr='" + descr + '\'' +
+                ", competences='" + competences + '\'' +
+                ", periode='" + periode + '\'' +
+                ", salaire='" + salaire + '\'' +
+                ", avantages='" + avantages + '\'' +
+                ", etablissement=" + etablissement +
+                '}';
     }
 
     public Long getId_offre() {

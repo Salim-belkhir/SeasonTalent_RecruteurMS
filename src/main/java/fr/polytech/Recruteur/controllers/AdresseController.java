@@ -49,15 +49,15 @@ public class AdresseController {
 
 
     @PutMapping("/{id}")
-    public ResponseEntity<Adresse> updateAdresse(@PathVariable Long idAdresse, @RequestBody Adresse adresse) {
-        Adresse newAdresse = adresseService.updateAdresse(idAdresse, adresse);
+    public ResponseEntity<Adresse> updateAdresse(@PathVariable Long id, @RequestBody Adresse adresse) {
+        Adresse newAdresse = adresseService.updateAdresse(id, adresse);
         HttpStatus status = (newAdresse == null) ? HttpStatus.BAD_REQUEST : HttpStatus.CREATED;
         return new ResponseEntity<>(newAdresse, status);
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Adresse> patchAdresse(@PathVariable Long idAdresse, @RequestBody Adresse adresse) {
-        Adresse newAdresse = adresseService.updateAdresse(idAdresse, adresse);
+    public ResponseEntity<Adresse> patchAdresse(@PathVariable Long id, @RequestBody Adresse adresse) {
+        Adresse newAdresse = adresseService.updateAdresse(id, adresse);
         HttpStatus status = (newAdresse == null) ? HttpStatus.BAD_REQUEST : HttpStatus.CREATED;
         return new ResponseEntity<>(newAdresse, status);
     }

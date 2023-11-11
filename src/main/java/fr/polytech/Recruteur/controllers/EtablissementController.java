@@ -44,14 +44,14 @@ public class EtablissementController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Etablissement> updateEtablissement(@PathVariable("id") Long id, @RequestBody Etablissement etablissement) {
+    public ResponseEntity<Etablissement> updateEtablissement(@PathVariable Long id, @RequestBody Etablissement etablissement) {
         Etablissement updatedEtablissement = etablissementService.updateEtablissement(id, etablissement);
         HttpStatus status = updatedEtablissement == null ? HttpStatus.NOT_FOUND : HttpStatus.OK;
         return new ResponseEntity<>(updatedEtablissement, status);
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Etablissement> patchEtablissement(@PathVariable("id") Long id, @RequestBody Etablissement etablissement) {
+    public ResponseEntity<Etablissement> patchEtablissement(@PathVariable Long id, @RequestBody Etablissement etablissement) {
         Etablissement patchedEtablissement = etablissementService.updateEtablissement(id, etablissement);
         HttpStatus status = patchedEtablissement == null ? HttpStatus.NOT_FOUND : HttpStatus.OK;
         return new ResponseEntity<>(patchedEtablissement, status);
@@ -60,7 +60,7 @@ public class EtablissementController {
 
     //TODO : Verifier les droits pour supprimer
     @DeleteMapping("/{id}")
-    public ResponseEntity<Etablissement> deleteEtablissement(@PathVariable("id") Long id) {
+    public ResponseEntity<Etablissement> deleteEtablissement(@PathVariable Long id) {
         Etablissement etablissement = etablissementService.deleteEtablissement(id);
         HttpStatus status = etablissement == null ? HttpStatus.NOT_FOUND : HttpStatus.OK;
         return new ResponseEntity<>(etablissement, status);

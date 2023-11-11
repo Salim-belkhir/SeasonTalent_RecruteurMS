@@ -10,7 +10,8 @@ public class Etablissement {
 
     @Id
     @Column(name = "id_etablissement")
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator = "etablissement_id_etablissement_seq")
+    @SequenceGenerator(name = "etablissement_id_etablissement_seq", sequenceName = "etablissement_id_etablissement_seq", allocationSize = 1)
     private Long id_etablissement;
 
     @Column(name = "nom_etablissement")
@@ -33,6 +34,16 @@ public class Etablissement {
 
     public Etablissement() {
 
+    }
+
+    @Override
+    public String toString() {
+        return "Etablissement{" +
+                "id_etablissement=" + id_etablissement +
+                ", nom_etablissement='" + nom_etablissement + '\'' +
+                ", logo='" + logo + '\'' +
+                ", adresse=" + adresse +
+                '}';
     }
 
     public Long getId_etablissement() {

@@ -20,14 +20,14 @@ CREATE TABLE etablissement (
     nom_etablissement varchar(255),
     logo varchar(255),
     id_adresse INT,
-    FOREIGN KEY (id_adresse) REFERENCES adresse(id_adresse)
+    FOREIGN KEY (id_adresse) REFERENCES adresse(id_adresse) ON DELETE SET NULL
 );
 
 CREATE TABLE gerer (
     id_etablissement INT,
     id_utilisateur INT,
     PRIMARY KEY (id_etablissement, id_utilisateur),
-    FOREIGN KEY (id_etablissement) REFERENCES etablissement(id_etablissement)
+    FOREIGN KEY (id_etablissement) REFERENCES etablissement(id_etablissement) ON DELETE CASCADE
 );
 
 CREATE TABLE offre (
@@ -40,7 +40,7 @@ CREATE TABLE offre (
     avantages varchar(255),
     id_utilisateur INT,
     id_etablissement INT,
-    FOREIGN KEY (id_etablissement) REFERENCES etablissement(id_etablissement)
+    FOREIGN KEY (id_etablissement) REFERENCES etablissement(id_etablissement) ON DELETE SET NULL
 );
 
 -- Insertion de données dans les tables

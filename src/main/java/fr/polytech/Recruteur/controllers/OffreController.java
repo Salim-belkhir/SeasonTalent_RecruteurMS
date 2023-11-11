@@ -57,15 +57,15 @@ public class OffreController {
 
 
     @PutMapping("/{id}")
-    public ResponseEntity<Offre> updateOffre(@PathVariable Long idOffre, @RequestBody Offre offre) {
-        Offre newOffre = offreService.updateOffre(idOffre, offre);
+    public ResponseEntity<Offre> updateOffre(@PathVariable Long id, @RequestBody Offre offre) {
+        Offre newOffre = offreService.updateOffre(id, offre);
         HttpStatus status = (newOffre == null) ? HttpStatus.BAD_REQUEST : HttpStatus.CREATED;
         return new ResponseEntity<>(newOffre, status);
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Offre> patchOffre(@PathVariable Long idOffre, @RequestBody Offre offre) {
-        Offre newOffre = offreService.updateOffre(idOffre, offre);
+    public ResponseEntity<Offre> patchOffre(@PathVariable Long id, @RequestBody Offre offre) {
+        Offre newOffre = offreService.updateOffre(id, offre);
         HttpStatus status = (newOffre == null) ? HttpStatus.BAD_REQUEST : HttpStatus.CREATED;
         return new ResponseEntity<>(newOffre, status);
     }
