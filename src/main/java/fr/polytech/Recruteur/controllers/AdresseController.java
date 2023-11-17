@@ -51,7 +51,7 @@ public class AdresseController {
     @PutMapping("/{id}")
     public ResponseEntity<Adresse> updateAdresse(@PathVariable Long id, @RequestBody Adresse adresse) {
         Adresse newAdresse = adresseService.updateAdresse(id, adresse);
-        HttpStatus status = (newAdresse == null) ? HttpStatus.BAD_REQUEST : HttpStatus.CREATED;
+        HttpStatus status = (newAdresse == null) ? HttpStatus.NOT_FOUND : HttpStatus.OK;
         return new ResponseEntity<>(newAdresse, status);
     }
 
