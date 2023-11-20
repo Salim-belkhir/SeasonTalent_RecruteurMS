@@ -70,7 +70,7 @@ class EtablissementServiceTest {
     @Test
     @DisplayName("Test getAllEtablissements Empty")
     void getAllEtablissementsEmpty() {
-        doReturn(Arrays.asList()).when(etablissementRepository).findAll();
+        doReturn(List.of()).when(etablissementRepository).findAll();
 
         List<Etablissement> etablissements = etablissementService.getAllEtablissements();
 

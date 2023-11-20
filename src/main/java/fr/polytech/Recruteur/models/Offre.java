@@ -3,7 +3,7 @@ package fr.polytech.Recruteur.models;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "offre")
@@ -25,10 +25,10 @@ public class Offre {
     private String competences;
 
     @Column(name = "dateDebut")
-    private Date dateDebut;
+    private LocalDate dateDebut;
 
     @Column(name = "dateFin")
-    private Date dateFin;
+    private LocalDate dateFin;
 
     @Column(name = "salaire")
     private String salaire;
@@ -43,7 +43,7 @@ public class Offre {
 
     public Offre() { }
 
-    public Offre(Long idOffre, String titre, String descr, String competences, Date dateDebut, Date dateFin, String salaire, String avantages, Etablissement etablissement) {
+    public Offre(Long idOffre, String titre, String descr, String competences, LocalDate dateDebut, LocalDate dateFin, String salaire, String avantages, Etablissement etablissement) {
         this.idOffre = idOffre;
         this.titre = titre;
         this.descr = descr;
@@ -98,13 +98,13 @@ public class Offre {
         this.competences = competences;
     }
 
-    public Date getDateDebut() { return dateDebut;}
+    public LocalDate getDateDebut() { return dateDebut;}
 
-    public void setDateDebut(Date dateDebut) { this.dateDebut = dateDebut;}
+    public void setDateDebut(LocalDate dateDebut) { this.dateDebut = dateDebut;}
 
-    public Date getDateFin() { return dateFin;}
+    public LocalDate getDateFin() { return dateFin;}
 
-    public void setDateFin(Date dateFin) { this.dateFin = dateFin;}
+    public void setDateFin(LocalDate dateFin) { this.dateFin = dateFin;}
 
     public String getSalaire() {
         return salaire;

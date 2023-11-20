@@ -35,7 +35,8 @@ CREATE TABLE offre (
     titre varchar(255),
     descr varchar(255),
     competences varchar(255),
-    periode varchar(255),
+    date_debut DATE,
+    date_fin DATE,
     salaire varchar(255),
     avantages varchar(255),
     id_utilisateur INT,
@@ -63,8 +64,8 @@ VALUES
     (2, 2),
     (3, 3);
 
-INSERT INTO offre (titre, descr, competences, periode, salaire, avantages, id_utilisateur, id_etablissement)
+INSERT INTO offre (titre, descr, competences, date_debut, date_fin, salaire, avantages, id_utilisateur, id_etablissement)
 VALUES
-    ('Second de cuisine', 'Accompagner l''équipe de cuisine', 'Dynamique', 'Janvier 2024 - Mars 2024', '1600 EUR', 'Hébergement', 2, 1),
-    ('Offre 2', 'Description de l''offre 2', 'Compétences requises pour l''offre 2', 'Février 2023 - Mars 2023', '3500 EUR', 'Avantages de l''offre 2', 2, 2),
-    ('Offre 3', 'Description de l''offre 3', 'Compétences requises pour l''offre 3', 'Mars 2023 - Avril 2023', '4000 EUR', 'Avantages de l''offre 3', 3, 3);
+    ('Second de cuisine', 'Accompagner l''équipe de cuisine', 'Dynamique', '2024-01-01', '2024-03-01', '1600 EUR', 'Hébergement', 2, 1),
+    ('Offre 2', 'Description de l''offre 2', 'Compétences requises pour l''offre 2', '2024-02-01', '2024-03-01', '3500 EUR', 'Avantages de l''offre 2', 2, 2),
+    ('Offre 3', 'Description de l''offre 3', 'Compétences requises pour l''offre 3', '2024-03-01', '2024-04-01', '4000 EUR', 'Avantages de l''offre 3', 3, 3);
