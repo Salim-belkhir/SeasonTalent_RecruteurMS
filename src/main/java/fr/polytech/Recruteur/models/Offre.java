@@ -3,15 +3,17 @@ package fr.polytech.Recruteur.models;
 
 import jakarta.persistence.*;
 
+import java.util.Date;
+
 @Entity
 @Table(name = "offre")
 public class Offre {
 
     @Id
-    @Column(name = "id_offre")
+    @Column(name = "idOffre")
     @GeneratedValue(strategy= GenerationType.SEQUENCE, generator = "offre_id_offre_seq")
     @SequenceGenerator(name = "offre_id_offre_seq", sequenceName = "offre_id_offre_seq", allocationSize = 1)
-    private Long id_offre;
+    private Long idOffre;
 
     @Column(name = "titre")
     private String titre;
@@ -22,8 +24,11 @@ public class Offre {
     @Column(name = "competences")
     private String competences;
 
-    @Column(name = "periode")
-    private String periode;
+    @Column(name = "dateDebut")
+    private Date dateDebut;
+
+    @Column(name = "dateFin")
+    private Date dateFin;
 
     @Column(name = "salaire")
     private String salaire;
@@ -38,12 +43,13 @@ public class Offre {
 
     public Offre() { }
 
-    public Offre(Long id_offre, String titre, String descr, String competences, String periode, String salaire, String avantages, Etablissement etablissement) {
-        this.id_offre = id_offre;
+    public Offre(Long idOffre, String titre, String descr, String competences, Date dateDebut, Date dateFin, String salaire, String avantages, Etablissement etablissement) {
+        this.idOffre = idOffre;
         this.titre = titre;
         this.descr = descr;
         this.competences = competences;
-        this.periode = periode;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
         this.salaire = salaire;
         this.avantages = avantages;
         this.etablissement = etablissement;
@@ -52,24 +58,21 @@ public class Offre {
     @Override
     public String toString() {
         return "Offre{" +
-                "id_offre=" + id_offre +
+                "idOffre=" + idOffre +
                 ", titre='" + titre + '\'' +
                 ", descr='" + descr + '\'' +
                 ", competences='" + competences + '\'' +
-                ", periode='" + periode + '\'' +
+                ", dateDebut='" + dateDebut + '\'' +
+                ", dateFin='" + dateFin + '\'' +
                 ", salaire='" + salaire + '\'' +
                 ", avantages='" + avantages + '\'' +
                 ", etablissement=" + etablissement +
                 '}';
     }
 
-    public Long getId_offre() {
-        return id_offre;
-    }
+    public Long getIdOffre() { return idOffre; }
 
-    public void setId_offre(Long id_offre) {
-        this.id_offre = id_offre;
-    }
+    public void setIdOffre(Long idOffre) { this.idOffre = idOffre; }
 
     public String getTitre() {
         return titre;
@@ -95,13 +98,13 @@ public class Offre {
         this.competences = competences;
     }
 
-    public String getPeriode() {
-        return periode;
-    }
+    public Date getDateDebut() { return dateDebut;}
 
-    public void setPeriode(String periode) {
-        this.periode = periode;
-    }
+    public void setDateDebut(Date dateDebut) { this.dateDebut = dateDebut;}
+
+    public Date getDateFin() { return dateFin;}
+
+    public void setDateFin(Date dateFin) { this.dateFin = dateFin;}
 
     public String getSalaire() {
         return salaire;

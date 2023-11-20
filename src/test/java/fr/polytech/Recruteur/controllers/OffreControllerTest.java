@@ -13,6 +13,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.Date;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.eq;
@@ -37,7 +38,7 @@ class OffreControllerTest {
     public void getOffreByIdTest() throws Exception {
         Adresse adresseGifi = new Adresse(3L, 10, "rue gifi", "34000", "Montpellier");
         Etablissement etablissementGifi = new Etablissement(1L, "GIFI", "gifi.png", adresseGifi);
-        Offre mockOffre = new Offre(1L, "Offre 1", "Description 1", "Dynamique, Communication", "du 2 au 8", "1000 euros", "aucun avantage", etablissementGifi);
+        Offre mockOffre = new Offre(1L, "Offre 1", "Description 1", "Dynamique, Communication", new Date(2023, 11, 24), new Date(2023, 12, 24), "1000 euros", "aucun avantage", etablissementGifi);
 
         when(offreService.findOffreById(1L)).thenReturn(mockOffre);
 
@@ -48,7 +49,8 @@ class OffreControllerTest {
                 .andExpect(jsonPath("$.titre", is("Offre 1")))
                 .andExpect(jsonPath("$.descr", is("Description 1")))
                 .andExpect(jsonPath("$.competences", is("Dynamique, Communication")))
-                .andExpect(jsonPath("$.periode", is("du 2 au 8")))
+                .andExpect(jsonPath("$.dateDebut", is("2023-11-24T00:00:00.000+00:00")))
+                .andExpect(jsonPath("$.dateFin", is("2023-12-24T00:00:00.000+00:00")))
                 .andExpect(jsonPath("$.etablissement.id_etablissement", is(1)))
                 .andExpect(jsonPath("$.etablissement.nom_etablissement", is("GIFI")))
                 .andExpect(jsonPath("$.etablissement.logo", is("gifi.png")))
