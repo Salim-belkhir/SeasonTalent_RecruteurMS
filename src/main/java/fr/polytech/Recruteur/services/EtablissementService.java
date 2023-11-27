@@ -23,7 +23,7 @@ public class EtablissementService {
     }
 
     public Etablissement addEtablissement(Etablissement etablissement) {
-        if(etablissement == null || etablissement.getNom_etablissement() == null || etablissement.getNom_etablissement().isBlank() 
+        if(etablissement == null || etablissement.getNomEtablissement() == null || etablissement.getNomEtablissement().isBlank()
             || etablissement.getLogo() == null || etablissement.getLogo().isBlank()){
             return null;
         }
@@ -39,15 +39,15 @@ public class EtablissementService {
             return null;
         }
 
-        if(etablissement.getNom_etablissement() != null && !etablissement.getNom_etablissement().isBlank()){
-            etablissementToUpdate.setNom_etablissement(etablissement.getNom_etablissement());
+        if(etablissement.getNomEtablissement() != null && !etablissement.getNomEtablissement().isBlank()){
+            etablissementToUpdate.setNomEtablissement(etablissement.getNomEtablissement());
         }
         if(etablissement.getLogo() != null && !etablissement.getLogo().isBlank()){
             etablissementToUpdate.setLogo(etablissement.getLogo());
         }
         if(etablissement.getAdresse() != null){
-            if(etablissement.getAdresse().getNumero_voie() != null){
-                etablissementToUpdate.getAdresse().setNumero_voie(etablissement.getAdresse().getNumero_voie());
+            if(etablissement.getAdresse().getNumeroVoie() != null){
+                etablissementToUpdate.getAdresse().setNumeroVoie(etablissement.getAdresse().getNumeroVoie());
             }
             if(etablissement.getAdresse().getVille() != null && !etablissement.getAdresse().getVille().isBlank()){
                 etablissementToUpdate.getAdresse().setVille(etablissement.getAdresse().getVille());
@@ -55,8 +55,8 @@ public class EtablissementService {
             if(etablissement.getAdresse().getVille() != null && !etablissement.getAdresse().getVille().isBlank()){
                 etablissementToUpdate.getAdresse().setVille(etablissement.getAdresse().getVille());
             }
-            if(etablissement.getAdresse().getCode_postal() != null){
-                etablissementToUpdate.getAdresse().setCode_postal(etablissement.getAdresse().getCode_postal());
+            if(etablissement.getAdresse().getCodePostal() != null){
+                etablissementToUpdate.getAdresse().setCodePostal(etablissement.getAdresse().getCodePostal());
             }
             etablissementToUpdate.setAdresse(etablissement.getAdresse());
         }
