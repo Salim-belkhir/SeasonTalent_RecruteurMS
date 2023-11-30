@@ -69,3 +69,4 @@ VALUES
     ('Second de cuisine', 'Accompagner l''équipe de cuisine', 'Dynamique', TO_DATE('01-01-2024', 'DD-MM-YYYY'), TO_DATE('01-03-2024', 'DD-MM-YYYY'), '1600 EUR', 'Hébergement', 2, 1),
     ('Offre 2', 'Description de l''offre 2', 'Compétences requises pour l''offre 2', TO_DATE('01-02-2023', 'DD-MM-YYYY'), TO_DATE('01-03-2023', 'DD-MM-YYYY'), '3500 EUR', 'Avantages de l''offre 2', 2, 2),
     ('Offre 3', 'Description de l''offre 3', 'Compétences requises pour l''offre 3', TO_DATE('01-03-2023', 'DD-MM-YYYY'), TO_DATE('01-04-2023', 'DD-MM-YYYY'), '4000 EUR', 'Avantages de l''offre 3', 3, 3);
+

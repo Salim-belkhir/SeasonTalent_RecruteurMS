@@ -9,6 +9,8 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "offre")
 @Getter
@@ -49,10 +51,26 @@ public class Offre {
     private Etablissement etablissement;
 
 
+
+    public Offre() { }
+
+    public Offre(Long idOffre, String titre, String descr, String competences, LocalDate dateDebut, LocalDate dateFin, String salaire, String avantages, Etablissement etablissement) {
+        this.idOffre = idOffre;
+        this.titre = titre;
+        this.descr = descr;
+        this.competences = competences;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+        this.salaire = salaire;
+        this.avantages = avantages;
+        this.etablissement = etablissement;
+    }
+
     @Override
     public String toString() {
         return "Offre{" +
-                "id_offre=" + idOffre +
+                "idOffre=" + idOffre +
+
                 ", titre='" + titre + '\'' +
                 ", descr='" + descr + '\'' +
                 ", competences='" + competences + '\'' +
