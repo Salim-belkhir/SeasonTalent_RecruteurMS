@@ -2,11 +2,21 @@ package fr.polytech.Recruteur.models;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.time.LocalDate;
 
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "offre")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Offre {
 
     @Id
@@ -37,8 +47,9 @@ public class Offre {
     private String avantages;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_etablissement", referencedColumnName = "id_etablissement")
+    @JoinColumn(name = "idEtablissement", referencedColumnName = "idEtablissement")
     private Etablissement etablissement;
+
 
 
     public Offre() { }
@@ -59,6 +70,7 @@ public class Offre {
     public String toString() {
         return "Offre{" +
                 "idOffre=" + idOffre +
+
                 ", titre='" + titre + '\'' +
                 ", descr='" + descr + '\'' +
                 ", competences='" + competences + '\'' +
@@ -70,63 +82,4 @@ public class Offre {
                 '}';
     }
 
-    public Long getIdOffre() { return idOffre; }
-
-    public void setIdOffre(Long idOffre) { this.idOffre = idOffre; }
-
-    public String getTitre() {
-        return titre;
-    }
-
-    public void setTitre(String titre) {
-        this.titre = titre;
-    }
-
-    public String getDescr() {
-        return descr;
-    }
-
-    public void setDescr(String descr) {
-        this.descr = descr;
-    }
-
-    public String getCompetences() {
-        return competences;
-    }
-
-    public void setCompetences(String competences) {
-        this.competences = competences;
-    }
-
-    public LocalDate getDateDebut() { return dateDebut;}
-
-    public void setDateDebut(LocalDate dateDebut) { this.dateDebut = dateDebut;}
-
-    public LocalDate getDateFin() { return dateFin;}
-
-    public void setDateFin(LocalDate dateFin) { this.dateFin = dateFin;}
-
-    public String getSalaire() {
-        return salaire;
-    }
-
-    public void setSalaire(String salaire) {
-        this.salaire = salaire;
-    }
-
-    public String getAvantages() {
-        return avantages;
-    }
-
-    public void setAvantages(String avantages) {
-        this.avantages = avantages;
-    }
-
-    public Etablissement getEtablissement() {
-        return etablissement;
-    }
-
-    public void setEtablissement(Etablissement etablissement) {
-        this.etablissement = etablissement;
-    }
 }

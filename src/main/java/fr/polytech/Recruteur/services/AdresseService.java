@@ -24,8 +24,8 @@ public class AdresseService {
     }
 
     public Adresse addAdresse(Adresse adresse) {
-        if(adresse == null || adresse.getNumero_voie() == null || adresse.getNom_voie() == null 
-            || adresse.getCode_postal() == null || adresse.getVille() == null){
+        if(adresse == null || adresse.getNumeroVoie() == null || adresse.getNomVoie() == null 
+            || adresse.getCodePostal() == null || adresse.getVille() == null){
             return null;
         }
         return adresseRepository.save(adresse);
@@ -37,14 +37,14 @@ public class AdresseService {
             return null;
         }
 
-        if(adresse.getNumero_voie() != null){
-            adresseToUpdate.setNumero_voie(adresse.getNumero_voie());
+        if(adresse.getNumeroVoie() != null){
+            adresseToUpdate.setNumeroVoie(adresse.getNumeroVoie());
         }
-        if(adresse.getNom_voie() != null){
-            adresseToUpdate.setNom_voie(adresse.getNom_voie());
+        if(adresse.getNomVoie() != null){
+            adresseToUpdate.setNomVoie(adresse.getNomVoie());
         }
-        if(adresse.getCode_postal() != null){
-            adresseToUpdate.setCode_postal(adresse.getCode_postal());
+        if(adresse.getCodePostal() != null){
+            adresseToUpdate.setCodePostal(adresse.getCodePostal());
         }
         if(adresse.getVille() != null){
             adresseToUpdate.setVille(adresse.getVille());
