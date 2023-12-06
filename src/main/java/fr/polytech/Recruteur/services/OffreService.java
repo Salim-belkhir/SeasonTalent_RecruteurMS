@@ -62,7 +62,7 @@ public class OffreService {
     public List<Offre> findAllOffresByEtablissement(Long id) {
         return offreRepository.findAll()
             .stream()
-            .filter(offre -> offre.getEtablissement().getId_etablissement() == id)
+            .filter(offre -> offre.getEtablissement().getIdEtablissement() == id)
             .toList();
     }
 }

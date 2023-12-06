@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -48,7 +49,7 @@ public class OffreController {
 
 
     @PostMapping("/")
-    public ResponseEntity<Offre> addOffre(Offre offre) {
+    public ResponseEntity<Offre> addOffre(@RequestBody Offre offre) {
         Offre newOffre = offreService.addOffre(offre);
         HttpStatus status = (newOffre == null) ? HttpStatus.BAD_REQUEST : HttpStatus.CREATED;
         return new ResponseEntity<>(newOffre, status);
@@ -56,15 +57,15 @@ public class OffreController {
 
 
     @PutMapping("/{id}")
-    public ResponseEntity<Offre> updateOffre(@PathVariable Long idOffre, Offre offre) {
-        Offre newOffre = offreService.updateOffre(idOffre, offre);
+    public ResponseEntity<Offre> updateOffre(@PathVariable Long id, @RequestBody Offre offre) {
+        Offre newOffre = offreService.updateOffre(id, offre);
         HttpStatus status = (newOffre == null) ? HttpStatus.BAD_REQUEST : HttpStatus.CREATED;
         return new ResponseEntity<>(newOffre, status);
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Offre> patchOffre(@PathVariable Long idOffre, Offre offre) {
-        Offre newOffre = offreService.updateOffre(idOffre, offre);
+    public ResponseEntity<Offre> patchOffre(@PathVariable Long id, @RequestBody Offre offre) {
+        Offre newOffre = offreService.updateOffre(id, offre);
         HttpStatus status = (newOffre == null) ? HttpStatus.BAD_REQUEST : HttpStatus.CREATED;
         return new ResponseEntity<>(newOffre, status);
     }

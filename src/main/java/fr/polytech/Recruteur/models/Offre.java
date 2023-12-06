@@ -2,15 +2,28 @@ package fr.polytech.Recruteur.models;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.time.LocalDate;
+
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "offre")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Offre {
 
     @Id
-    @Column(name = "id_offre")
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id_offre;
+    @Column(name = "idOffre")
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator = "offre_id_offre_seq")
+    @SequenceGenerator(name = "offre_id_offre_seq", sequenceName = "offre_id_offre_seq", allocationSize = 1)
+    private Long idOffre;
 
     @Column(name = "titre")
     private String titre;
@@ -21,8 +34,11 @@ public class Offre {
     @Column(name = "competences")
     private String competences;
 
-    @Column(name = "periode")
-    private String periode;
+    @Column(name = "dateDebut")
+    private LocalDate dateDebut;
+
+    @Column(name = "dateFin")
+    private LocalDate dateFin;
 
     @Column(name = "salaire")
     private String salaire;
@@ -31,84 +47,39 @@ public class Offre {
     private String avantages;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_etablissement", referencedColumnName = "id_etablissement")
+    @JoinColumn(name = "idEtablissement", referencedColumnName = "idEtablissement")
     private Etablissement etablissement;
+
 
 
     public Offre() { }
 
-    public Offre(Long id_offre, String titre, String descr, String competences, String periode, String salaire, String avantages, Etablissement etablissement) {
-        this.id_offre = id_offre;
+    public Offre(Long idOffre, String titre, String descr, String competences, LocalDate dateDebut, LocalDate dateFin, String salaire, String avantages, Etablissement etablissement) {
+        this.idOffre = idOffre;
         this.titre = titre;
         this.descr = descr;
         this.competences = competences;
-        this.periode = periode;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
         this.salaire = salaire;
         this.avantages = avantages;
         this.etablissement = etablissement;
     }
 
-    public Long getId_offre() {
-        return id_offre;
+    @Override
+    public String toString() {
+        return "Offre{" +
+                "idOffre=" + idOffre +
+
+                ", titre='" + titre + '\'' +
+                ", descr='" + descr + '\'' +
+                ", competences='" + competences + '\'' +
+                ", dateDebut='" + dateDebut + '\'' +
+                ", dateFin='" + dateFin + '\'' +
+                ", salaire='" + salaire + '\'' +
+                ", avantages='" + avantages + '\'' +
+                ", etablissement=" + etablissement +
+                '}';
     }
 
-    public void setId_offre(Long id_offre) {
-        this.id_offre = id_offre;
-    }
-
-    public String getTitre() {
-        return titre;
-    }
-
-    public void setTitre(String titre) {
-        this.titre = titre;
-    }
-
-    public String getDescr() {
-        return descr;
-    }
-
-    public void setDescr(String descr) {
-        this.descr = descr;
-    }
-
-    public String getCompetences() {
-        return competences;
-    }
-
-    public void setCompetences(String competences) {
-        this.competences = competences;
-    }
-
-    public String getPeriode() {
-        return periode;
-    }
-
-    public void setPeriode(String periode) {
-        this.periode = periode;
-    }
-
-    public String getSalaire() {
-        return salaire;
-    }
-
-    public void setSalaire(String salaire) {
-        this.salaire = salaire;
-    }
-
-    public String getAvantages() {
-        return avantages;
-    }
-
-    public void setAvantages(String avantages) {
-        this.avantages = avantages;
-    }
-
-    public Etablissement getEtablissement() {
-        return etablissement;
-    }
-
-    public void setEtablissement(Etablissement etablissement) {
-        this.etablissement = etablissement;
-    }
 }

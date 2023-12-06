@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -40,7 +41,7 @@ public class AdresseController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<Adresse> addAdresse(Adresse adresse) {
+    public ResponseEntity<Adresse> addAdresse(@RequestBody Adresse adresse) {
         Adresse newAdresse = adresseService.addAdresse(adresse);
         HttpStatus status = (newAdresse == null) ? HttpStatus.BAD_REQUEST : HttpStatus.CREATED;
         return new ResponseEntity<>(newAdresse, status);
@@ -48,15 +49,15 @@ public class AdresseController {
 
 
     @PutMapping("/{id}")
-    public ResponseEntity<Adresse> updateAdresse(@PathVariable Long idAdresse, Adresse adresse) {
-        Adresse newAdresse = adresseService.updateAdresse(idAdresse, adresse);
-        HttpStatus status = (newAdresse == null) ? HttpStatus.BAD_REQUEST : HttpStatus.CREATED;
+    public ResponseEntity<Adresse> updateAdresse(@PathVariable Long id, @RequestBody Adresse adresse) {
+        Adresse newAdresse = adresseService.updateAdresse(id, adresse);
+        HttpStatus status = (newAdresse == null) ? HttpStatus.NOT_FOUND : HttpStatus.OK;
         return new ResponseEntity<>(newAdresse, status);
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Adresse> patchAdresse(@PathVariable Long idAdresse, Adresse adresse) {
-        Adresse newAdresse = adresseService.updateAdresse(idAdresse, adresse);
+    public ResponseEntity<Adresse> patchAdresse(@PathVariable Long id, @RequestBody Adresse adresse) {
+        Adresse newAdresse = adresseService.updateAdresse(id, adresse);
         HttpStatus status = (newAdresse == null) ? HttpStatus.BAD_REQUEST : HttpStatus.CREATED;
         return new ResponseEntity<>(newAdresse, status);
     }
